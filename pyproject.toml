@@ -1,0 +1,52 @@
+[project]
+name = "prefecture"
+version = "0.1.0"
+description = "A procedurally generated absurd préfecture: a benchmark for LLM agents that must navigate bureaucracy, and know when to give up."
+authors = [
+    { name = "Martin", email = "martin.lepadanc@gmail.com" }
+]
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = [
+    # LangChain / LangGraph APIs move fast: exact pins, bump deliberately.
+    "langgraph==1.2.21",
+    "langchain-core==1.8.0",
+    "langchain-ollama==1.1.0",
+    "pydantic==2.14.3",
+    "networkx==3.7",
+    "pyyaml==6.0.3",
+    "rich==15.0.0",
+    "typer==0.29.1",
+]
+
+[project.scripts]
+prefecture = "prefecture.cli:app"
+
+[dependency-groups]
+dev = [
+    "hypothesis==6.170.15",
+    "pre-commit==4.7.0",
+    "pytest==9.2.0",
+    "pytest-cov==7.1.0",
+    "ruff==0.17.5",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.24,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF"]
+# French typographic characters (« », ’) are part of the project's flavour.
+ignore = ["RUF001", "RUF002", "RUF003"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = [
+    "llm: calls a real local model through Ollama (slow, excluded from CI)",
+]

@@ -1,0 +1,19 @@
+# Models used by each role, served by Ollama.
+# Sized for an 8 GB GPU: both roles share one model so it stays loaded in VRAM
+# (two different models would be swapped in and out at every turn).
+ollama_url: http://localhost:11434
+cache_dir: .cache/llm
+
+roles:
+  agent:
+    model: qwen3.5:9b
+    temperature: 0.0
+    seed: 0
+    num_ctx: 8192
+    reasoning: false
+  clerk:
+    model: qwen3.5:9b
+    temperature: 0.8
+    seed: 0
+    num_ctx: 4096
+    reasoning: false

@@ -1,0 +1,44 @@
+# --- Private working files (method, courses, internal docs) ---
+CLAUDE.md
+.claude/
+learning/
+DEMARRAGE.md
+docs/ROADMAP.md
+docs/DESIGN.md
+
+# --- Project data ---
+runs/*
+!runs/samples/
+.cache/
+.env
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.so
+build/
+dist/
+*.egg-info/
+.eggs/
+.venv/
+venv/
+.python-version.local
+
+# --- Tooling ---
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.hypothesis/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# --- Viewer (node) ---
+node_modules/
